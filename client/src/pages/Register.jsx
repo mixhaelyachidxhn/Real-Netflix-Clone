@@ -30,9 +30,10 @@ function Register() {
         <div className='wrapper'>
           <Link to='/'>
             <img
-              src={require('../images/Netflix_2015_logo.svg.png')}
-              alt='Netflix logo'
+              src={require('../images/PoetryOnTV Logo.png')}
+              alt='PoetryON.tv Logo'
               className='logo'
+              style={{ height: '40px', borderRadius: '50%' }}
             />
           </Link>
           <Link to='/login'>
@@ -41,8 +42,8 @@ function Register() {
         </div>
       </div>
       <div className='container'>
-        <h1>Unlimited films, TV programmes and more.</h1>
-        <h2>Watch anywhere. Cancel at any time.</h2>
+        <h1>Decentralized Poetry, Films & Series.</h1>
+        <h2>Watch anywhere. Connect across the network.</h2>
         <p>
           Ready to watch? Enter your email to create or restart your membership.
         </p>
