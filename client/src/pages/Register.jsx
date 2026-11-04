@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import bannerImage from '../images/PoetryOn.TV Banner.png';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -25,7 +26,16 @@ function Register() {
   };
 
   return (
-    <div className='register'>
+    <div 
+      className='register'
+      style={{
+        width: '100vw',
+        height: '100vh',
+        background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%), url(${bannerImage}) no-repeat`,
+        backgroundSize: 'cover',
+        color: 'white'
+      }}
+    >
       <div className='top'>
         <div className='wrapper'>
           <Link to='/'>
