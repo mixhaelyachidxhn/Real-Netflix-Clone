@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import bannerImage from '../images/PoetryOn.TV Banner.png';
+import logoImage from '../images/PoetryOnTV Logo.png';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -31,7 +32,7 @@ function Register() {
       style={{
         width: '100vw',
         height: '100vh',
-        background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%), url(${bannerImage}) no-repeat`,
+        background: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%), url("${bannerImage}") no-repeat center center`,
         backgroundSize: 'cover',
         color: 'white'
       }}
@@ -40,7 +41,7 @@ function Register() {
         <div className='wrapper'>
           <Link to='/'>
             <img
-              src={require('../images/PoetryOnTV Logo.png')}
+              src={logoImage}
               alt='PoetryON.tv Logo'
               className='logo'
               style={{ height: '120px', width: 'auto', objectFit: 'contain' }}
