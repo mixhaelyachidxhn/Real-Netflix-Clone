@@ -4,40 +4,18 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
   --main-color: #141414;
+  --gold-color: #d4af37;
+  --black-color: #000000;
 }
 
 .link {
   color: inherit;
   text-decoration: none;
-}
-
-@mixin tablet {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: 480px) {
-    @content;
-  }
-}
-
-@mixin ultraSmall {
-  @media (max-width: 380px) {
-    @content;
-  }
-}
-
-@mixin short {
-  @media (max-height: 800px) {
-    @content;
-  }
 }
 
 .home {
@@ -52,126 +30,103 @@ body {
   position: fixed;
   top: 0;
   z-index: 999;
-
   &.scrolled {
     background-color: var(--main-color);
   }
-
   .container {
     height: 68px;
     padding: 0 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(360deg, transparent 0%, rgb(0, 0, 0, 0.8) 100%);
-
-    @include mobile {
+    background: linear-gradient(360deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    @media (max-width: 480px) {
       padding: 0 20px;
     }
-
-    @include ultraSmall {
+    @media (max-width: 380px) {
       padding: 0 10px;
     }
-
     .left,
     .right {
       display: flex;
       align-items: center;
       gap: 22px;
-
-      @include ultraSmall {
+      @media (max-width: 380px) {
         gap: 10px;
       }
-
+      span,
       span {
         cursor: pointer;
       }
-    }
-
-    .left {
       img {
         height: 25px;
         margin-right: 25px;
         cursor: pointer;
-
-        @include mobile {
+        @media (max-width: 480px) {
           margin-right: 0px;
         }
       }
-
       span {
         transition: all 0.4s ease;
-
-        @include tablet {
+        @media (max-width: 768px) {
           display: none;
-        }
-
-        &.navbarmainLinks {
-          @include tablet {
+          &.navbarmainLinks {
             display: block;
           }
         }
-
         &:hover {
-          color: #8f8f8f;
+          color: var(--gold-color);
         }
       }
     }
-
     .right {
       .icon {
         cursor: pointer;
       }
-
       .dropdown {
         transition: all 0.4s ease;
       }
-
-      .pfpicon img {
-        height: 35px;
-        width: 35px;
+      .pfpicon {
+        img {
+          height: 35px;
+          width: 35px;
+        }
+        &:hover > .dropdown {
+          transform: rotate(180deg);
+        }
+        &:hover > .options {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          position: absolute;
+        }
       }
-
-      .pfpicon:hover > .dropdown {
-        transform: rotate(180deg);
-      }
-
       .options {
         display: none;
         background-color: var(--main-color);
         padding: 20px;
         right: 65px;
         top: 52px;
-
+        border: 1px solid var(--gold-color);
         .opt {
           display: flex;
           align-items: center;
           gap: 10px;
-
           a {
             text-decoration: none;
             color: inherit;
           }
+          &:hover {
+            color: var(--gold-color);
+            text-decoration: underline;
+          }
         }
-
-        .opt:hover {
-          text-decoration: underline;
-        }
-
         hr {
           border: 0;
           border-top: 1px solid #7e7e7e;
           margin: 0 -20px;
         }
       }
-
-      .pfpicon:hover > .options {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-      }
-
       img {
         height: 32px;
         border-radius: 5px;
@@ -184,56 +139,47 @@ body {
 .featured {
   height: 70vh;
   position: relative;
-
-  @include tablet {
+  @media (max-width: 768px) {
     height: 60vh;
   }
-
-  @include mobile {
+  @media (max-width: 480px) {
     height: 50vh;
   }
-
   .category {
     position: absolute;
     top: 80px;
     left: 50px;
     font-size: 35px;
     font-weight: 700;
-    color: white;
+    color: var(--gold-color);
     display: flex;
     align-items: center;
     gap: 40px;
-
-    .featuredMovieType {
-      @include mobile {
+    @media (max-width: 480px) {
+      .featuredMovieType {
         display: none;
       }
     }
-
     select {
       cursor: pointer;
       background-color: var(--main-color);
-      border: 1px solid white;
-      border-radius: none;
-      color: white;
+      border: 1px solid var(--gold-color);
+      color: var(--gold-color);
       padding: 5px;
       font-size: 18px;
       font-weight: 700;
-
-      @include mobile {
+      @media (max-width: 480px) {
         padding: 5px 0 5px 5px;
         margin-left: 200%;
         font-size: 12px;
       }
     }
   }
-
   .featured-header {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   .info {
     width: 35%;
     position: absolute;
@@ -242,44 +188,36 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    @include tablet {
+    @media (max-width: 768px) {
       width: 65%;
       top: 35%;
     }
-
-    @include mobile {
+    @media (max-width: 480px) {
       width: 70%;
       top: 30%;
     }
-
-    @include short {
+    @media (max-height: 800px) {
       top: 20%;
     }
   }
-
   .description {
     color: #f4f1e9;
     font-size: 20px;
     font-weight: 500;
-
-    @include tablet {
+    @media (max-width: 768px) {
       font-size: 18px;
     }
-
-    @include mobile {
+    @media (max-width: 480px) {
       font-size: 16px;
     }
   }
-
   .buttons {
     display: flex;
     align-items: center;
     gap: 15px;
   }
-
   button {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     display: flex;
     gap: 5px;
     align-items: center;
@@ -289,70 +227,58 @@ body {
     border-radius: 5px;
     padding: 5px 20px;
     cursor: pointer;
-
-    @include tablet {
+    @media (max-width: 768px) {
       font-size: 20px;
       padding: 10px 10px;
     }
-
-    @include mobile {
+    @media (max-width: 480px) {
       font-size: 16px;
       padding: 5px 5px;
     }
   }
-
   .play {
-    background-color: #f4f1e9;
+    background-color: var(--gold-color);
+    color: var(--black-color);
     padding-right: 35px;
-
-    @include tablet {
+    @media (max-width: 768px) {
       padding-right: 15px;
     }
-
-    @include mobile {
+    @media (max-width: 480px) {
       padding-right: 15px;
     }
-
     &:hover {
-      background-color: rgba(255, 255, 255, 0.678);
+      background-color: #b8972b;
     }
   }
-
   .more {
     color: white;
-    background-color: #cfcfcf2f;
-
+    background-color: rgba(207, 207, 207, 0.1843137255);
     &:hover {
-      background-color: #cfcfcf18;
+      background-color: rgba(207, 207, 207, 0.0941176471);
     }
   }
-
   .feat-icon {
     height: 40px;
     width: 40px;
-
-    @include mobile {
+    @media (max-width: 480px) {
       height: 25px;
       width: 25px;
     }
   }
-
   .age-rating {
-    color: #f4f1e9;
+    color: var(--gold-color);
     font-size: 20px;
     position: absolute;
     right: -175%;
     padding: 8px 70px 8px 8px;
-    background-color: #ffffff18;
-    border-left: 3px solid #bebebe;
-
-    @include tablet {
+    background-color: rgba(255, 255, 255, 0.0941176471);
+    border-left: 3px solid var(--gold-color);
+    @media (max-width: 768px) {
       right: -50%;
       padding-right: 30px;
       font-size: 16px;
     }
-
-    @include mobile {
+    @media (max-width: 480px) {
       right: -40%;
       padding-right: 30px;
       font-size: 12px;
@@ -368,25 +294,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-
-  @include tablet {
+  @media (max-width: 768px) {
     left: -40px;
   }
-
-  @include mobile {
+  @media (max-width: 480px) {
     left: -40px;
   }
-
   .listTitle {
-    color: #f4f1e9;
+    color: var(--gold-color);
     font-size: 26px;
     font-weight: 700;
     margin-left: 65px;
   }
-
   .wrapper {
     position: relative;
-
     .arrowWrapper {
       width: 30px;
       height: 100%;
@@ -399,40 +320,24 @@ body {
       transition: all 0.1s linear;
       cursor: pointer;
       z-index: 99;
-
       &.left {
         left: 0px;
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
-
-        @include tablet {
-          left: 40px;
-        }
-
-        @include mobile {
-          left: 40px;
-        }
+        @media (max-width: 768px) { left: 40px; }
+        @media (max-width: 480px) { left: 40px; }
       }
-
       &.right {
         right: 0px;
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
-
-        @include tablet {
-          right: -40px;
-        }
-
-        @include mobile {
-          right: -40px;
-        }
+        @media (max-width: 768px) { right: -40px; }
+        @media (max-width: 480px) { right: -40px; }
       }
-
       &:hover {
-        background-color: rgb(22, 22, 22, 0.5);
+        background-color: rgba(22, 22, 22, 0.5);
       }
     }
-
     .sliderArrow {
       width: 30px;
       height: 100%;
@@ -444,20 +349,10 @@ body {
       transition: all 0.1s linear;
       cursor: pointer;
       z-index: 99;
-
-      &.left {
-        left: 0px;
-      }
-
-      &.right {
-        right: 0px;
-      }
-
-      &:hover {
-        transform: scale(1.2);
-      }
+      &.left { left: 0px; }
+      &.right { right: 0px; }
+      &:hover { transform: scale(1.2); }
     }
-
     .container {
       margin-left: 65px;
       display: flex;
@@ -477,13 +372,12 @@ body {
   cursor: pointer;
   color: #f4f1e9;
   position: relative;
-
+  border: 1px solid rgba(212, 175, 55, 0.3);
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   video {
     width: 100%;
     height: 202.5px;
@@ -492,20 +386,17 @@ body {
     top: 0;
     left: 0;
   }
-
   &:hover {
     z-index: 99;
     width: 360px;
     height: 360px;
     position: absolute;
     top: -120px;
-    box-shadow: -10px 0px 13px -7px #0000004f, 10px 0px 13px -7px #0000004f,
-      5px 5px 0px -30px rgba(0, 0, 0, 0), 0px 10px 13px -7px #0000004f;
-
+    box-shadow: -10px 0px 13px -7px rgba(212, 175, 55, 0.3), 10px 0px 13px -7px rgba(212, 175, 55, 0.3), 5px 5px 0px -30px rgba(0, 0, 0, 0), 0px 10px 13px -7px rgba(212, 175, 55, 0.3);
+    border: 1px solid var(--gold-color);
     img {
       height: 202.5px;
     }
-
     .itemInfo {
       margin-left: 20px;
       width: 100%;
@@ -513,65 +404,55 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-
       .icons {
         display: flex;
         gap: 8px;
-
         .play {
           padding: 5px;
-          background-color: #f4f1e9;
-          color: var(--main-color);
+          background-color: var(--gold-color);
+          color: var(--black-color);
           border-radius: 50%;
           font-size: 28px;
-
           &:hover {
-            background-color: rgba(255, 255, 255, 0.678);
+            background-color: #b8972b;
           }
         }
-
         .add,
         .thumbsUp {
           padding: 5px;
-          border: 2px solid #818181;
+          border: 2px solid var(--gold-color);
           border-radius: 50%;
-
           &:hover {
             border: 2px solid white;
             background-color: #272727;
           }
         }
       }
-
       .itemInfoTop {
         display: flex;
         align-items: center;
         gap: 8px;
-
         .match {
-          color: rgb(82, 212, 82);
+          color: var(--gold-color);
           font-weight: 700;
         }
-
         .duration {
           font-weight: 700;
         }
-
         .bordered {
           padding: 2px 8px;
-          border: 1px solid #8f8f8f;
-
+          border: 1px solid var(--gold-color);
           &.hd {
             font-size: 10px;
           }
         }
       }
-
       .genre {
         display: flex;
         align-items: center;
         gap: 5px;
         font-weight: 500;
+        color: var(--gold-color);
       }
     }
   }
@@ -581,16 +462,14 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-
   .back {
     position: absolute;
     top: 10px;
     left: 10px;
-    color: white;
+    color: var(--gold-color);
     cursor: pointer;
     z-index: 2;
   }
-
   .video {
     width: 100%;
     height: 100%;
@@ -601,20 +480,12 @@ body {
 .register {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0.8) 100%
-    ),
-    url('./images/netflix_background.png') no-repeat;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%), url("./images/PoetryOn.TV Banner.png") no-repeat;
   background-size: cover;
   color: white;
-
   .logo {
     cursor: pointer;
   }
-
   .top {
     .wrapper {
       padding: 25px 55px;
@@ -622,19 +493,21 @@ body {
       align-items: center;
       justify-content: space-between;
     }
-
     .loginButton {
-      background-color: #d60101;
-      color: white;
-      border: none;
+      background-color: var(--black-color);
+      color: var(--gold-color);
+      border: 1px solid var(--gold-color);
       font-size: 16px;
       border-radius: 3px;
       padding: 6px 17px;
       cursor: pointer;
-      font-family: 'Roboto', sans-serif;
+      font-family: "Roboto", sans-serif;
+      &:hover {
+        background-color: var(--gold-color);
+        color: var(--black-color);
+      }
     }
   }
-
   .container {
     width: 40%;
     height: 90%;
@@ -646,69 +519,51 @@ body {
     justify-content: center;
     text-align: center;
     margin-top: -50px;
-
-    @include tablet {
-      width: 80%;
-    }
-
-    @include mobile {
-      width: 90%;
-    }
-
+    @media (max-width: 768px) { width: 80%; }
+    @media (max-width: 480px) { width: 90%; }
     h1 {
       font-size: 60px;
-
-      @include mobile {
-        font-size: 50px;
-      }
+      color: var(--gold-color);
+      @media (max-width: 480px) { font-size: 50px; }
     }
-
     h2 {
       font-size: 30px;
       font-weight: 400;
-
-      @include mobile {
-        font-size: 25px;
-      }
+      color: #f4f1e9;
+      @media (max-width: 480px) { font-size: 25px; }
     }
-
     p {
       font-size: 20px;
-
-      @include mobile {
-        font-size: 16px;
-      }
+      color: var(--gold-color);
+      @media (max-width: 480px) { font-size: 16px; }
     }
-
     .input {
       width: 100%;
       display: flex;
       align-items: center;
-
       input {
         height: 61px;
         width: 66%;
         text-indent: 10px;
         font-size: 16px;
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
+        background-color: rgba(0, 0, 0, 0.8);
+        border: 1px solid var(--gold-color);
+        color: white;
       }
-
       button {
         height: 65px;
         width: 33%;
-        background-color: #d60101;
-        color: white;
+        background-color: var(--gold-color);
+        color: var(--black-color);
         font-size: 30px;
         border: none;
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         cursor: pointer;
-
-        @include mobile {
-          font-size: 20px;
-        }
-
+        font-weight: 700;
+        @media (max-width: 480px) { font-size: 20px; }
         &:hover {
-          background-color: red;
+          background-color: #b8972b;
         }
       }
     }
@@ -718,16 +573,9 @@ body {
 .login {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0.8) 100%
-    ),
-    url('./images/netflix_background.png') no-repeat;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%), url("./images/PoetryOn.TV Banner.png") no-repeat;
   background-size: cover;
   color: white;
-
   .top {
     .wrapper {
       padding: 25px 55px;
@@ -736,7 +584,6 @@ body {
       justify-content: space-between;
     }
   }
-
   .container {
     width: 40%;
     height: 90%;
@@ -747,63 +594,62 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: -50px;
-
     form {
       width: 350px;
       height: 550px;
       padding: 30px;
       border-radius: 5px;
-      background-color: #000000d2;
+      background-color: rgba(0, 0, 0, 0.9);
+      border: 1px solid var(--gold-color);
       display: flex;
       flex-direction: column;
       gap: 40px;
-
       input {
         height: 50px;
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         text-indent: 10px;
-        background-color: #333333;
-        border: none;
+        background-color: #222222;
+        border: 1px solid rgba(212, 175, 55, 0.5);
         border-radius: 5px;
         font-size: 16px;
         color: white;
+        &:focus {
+          border-color: var(--gold-color);
+          outline: none;
+        }
       }
-
       button {
         height: 50px;
-        background-color: #d60101;
-        font-family: 'Roboto', sans-serif;
+        background-color: var(--gold-color);
+        font-family: "Roboto", sans-serif;
         font-size: 20px;
-        font-weight: 500;
-        color: white;
+        font-weight: 700;
+        color: var(--black-color);
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        &:hover {
+          background-color: #b8972b;
+        }
       }
-
       span {
-        color: #737373;
+        color: #a3a3a3;
         margin-top: 50px;
-
         .signUpLink {
-          color: white;
+          color: var(--gold-color);
           text-decoration: none;
-
           &:hover {
             text-decoration: underline;
             cursor: pointer;
           }
         }
       }
-
       small {
-        color: #737373;
+        color: #a3a3a3;
         margin-top: -25px;
-
         a {
-          color: #005fc7;
+          color: var(--gold-color);
           text-decoration: none;
-
           &:hover {
             text-decoration: underline;
             cursor: pointer;
