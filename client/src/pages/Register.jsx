@@ -33,7 +33,7 @@ function Register() {
               src={require('../images/PoetryOnTV Logo.png')}
               alt='PoetryON.tv Logo'
               className='logo'
-              style={{ height: '40px', borderRadius: '50%' }}
+              style={{ height: '120px', width: 'auto', objectFit: 'contain' }}
             />
           </Link>
           <Link to='/login'>
