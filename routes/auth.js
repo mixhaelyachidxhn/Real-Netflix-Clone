@@ -2,12 +2,15 @@ const router = require("express").Router();
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 
+// Fallback safety key if environment variable is not picked up
+const SECRET = process.env.SECRET_KEY || "poetryonsecretkey12345";
+
 // REGISTER
 router.post("/register", async (req, res) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
-    password: CryptoJS.AES.encrypt(req.body.password, process.env.SECRET_KEY).toString(),
+    password: CryptoJS.AES.encrypt(req.body.password, SECRET).toString(),
   });
 
   try {
@@ -26,7 +29,7 @@ router.post("/login", async (req, res) => {
       return res.status(401).json("Wrong password or username!");
     }
 
-    const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
+    const bytes = CryptoJS.AES.decrypt(user.password, SECRET);
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
 
     if (originalPassword !== req.body.password) {
