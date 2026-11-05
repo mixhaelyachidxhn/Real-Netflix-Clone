@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import bannerImage from '../images/PoetryOn.TV Banner.png';
-import logoImage from '../images/PoetryOnTV Logo.png';
+import bannerImage from '../../images/PoetryOn.TV Banner.png';
+import logoImage from '../../images/PoetryOnTV Logo.png';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -39,17 +39,20 @@ function Register() {
     >
       <div className='top'>
         <div className='wrapper'>
-          <Link to='/'>
-            <img
-              src={logoImage}
-              alt='PoetryON.tv Logo'
-              className='logo'
-              style={{ height: '120px', width: 'auto', objectFit: 'contain' }}
-            />
-          </Link>
-          <Link to='/login'>
-            <button className='loginButton'>Sign In</button>
-          </Link>
+          <img
+            src={logoImage}
+            alt='PoetryON.tv Logo'
+            className='logo'
+            style={{ height: '360px', width: 'auto', objectFit: 'contain' }}
+          />
+          {/* Sign In button is temporarily disabled */}
+          <button 
+            className='loginButton' 
+            disabled 
+            style={{ backgroundColor: 'gray', cursor: 'not-allowed', opacity: 0.6 }}
+          >
+            Sign In
+          </button>
         </div>
       </div>
       <div className='container'>
